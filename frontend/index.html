@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Aligno</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="sidebar">
+      <div class="logo">
+        <a href="landing.html" style="text-decoration:none; display:flex; align-items:center; gap:10px;">
+          <img src="assets/logo-icon.png" alt="Aligno Icon" style="height:34px; width:34px; object-fit:contain;" />
+          <span style="font-weight:800; font-size:18px; color:var(--fg); letter-spacing:-0.5px;">Aligno<span style="color:#6366f1;">.ai</span></span>
+        </a>
+      </div>
+
+      <div class="section-label">EXERCISES</div>
+      <div id="exercise-list">
+        <button class="exercise-btn active" data-exercise="squat">
+          <div>
+            <div class="ex-name">Squat</div>
+            <div class="ex-desc">Knee &amp; hip alignment</div>
+          </div>
+        </button>
+        <button class="exercise-btn" data-exercise="pushup">
+          <div>
+            <div class="ex-name">Push-Up</div>
+            <div class="ex-desc">Back &amp; elbow form</div>
+          </div>
+        </button>
+        <button class="exercise-btn" data-exercise="plank">
+          <div>
+            <div class="ex-name">Plank</div>
+            <div class="ex-desc">Core &amp; spine posture</div>
+          </div>
+        </button>
+        <button class="exercise-btn" data-exercise="shoulderpress">
+          <div>
+            <div class="ex-name">Shoulder Press</div>
+            <div class="ex-desc">Shoulder &amp; elbow angle</div>
+          </div>
+        </button>
+        
+        <button class="exercise-btn" data-exercise="bicepscurl">
+          <div>
+            <div class="ex-name">Bicep Curl</div>
+            <div class="ex-desc">Elbow flexion range</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="section-label" style="margin-top:24px;">SESSION STATS</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="stat-reps">0</div>
+          <div class="stat-label">Reps</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-score">—</div>
+          <div class="stat-label">Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-good">0</div>
+          <div class="stat-label">Good Reps</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-bad">0</div>
+          <div class="stat-label">Needs Work</div>
+        </div>
+      </div>
+
+      <div id="history-panel">
+        <div class="section-label" style="margin-top:8px;">REP HISTORY</div>
+        <div id="rep-history"></div>
+      </div>
+    </div>
+
+    <div id="main">
+      <div id="topbar">
+        <div id="exercise-title" style="display:flex; align-items:center;">
+          <span id="current-exercise-name">Squat</span>
+          <span id="exercise-badge">ACTIVE</span>
+          <button id="btn-demo" class="btn-secondary" style="margin-left:16px; padding:6px 12px; font-size:12px; height:auto;">Watch Demo</button>
+        </div>
+        <div id="topbar-actions">
+          <button id="btn-start" class="btn-primary">Start Camera</button>
+          <button id="btn-reset" class="btn-secondary">Reset</button>
+          <button id="btn-voice" class="btn-voice" title="Toggle voice coach">
+            <span id="voice-btn-icon">🔇</span>
+            <span id="voice-btn-label">Voice Off</span>
+            
+          </button>
+        </div>
+      </div>
+
+      
+      
+
+      <div id="video-container">
+        <video id="video" playsinline autoplay muted></video>
+        <canvas id="canvas"></canvas>
+        <div id="overlay-feedback">
+          <div id="feedback-main"></div>
+          <div id="feedback-angles"></div>
+        </div>
+        <div id="rep-flash"></div>
+        <div id="no-camera-msg">
+          <div>
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            <p>Click <strong>Start Camera</strong> to begin</p>
+            <p style="font-size:13px;color:#888">Position yourself so your full body is visible</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="guide-panel">
+        <div id="guide-title">Exercise Guide</div>
+        <div id="guide-steps"></div>
+        <div id="angle-monitor">
+          <div class="section-label">LIVE JOINT ANGLES</div>
+          <div id="angle-bars"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Demo Modal -->
+  <div id="demo-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px); z-index:1000; align-items:center; justify-content:center;">
+    <div style="background:#18181f; border:1px solid #2e2e3a; border-radius:16px; padding:24px; max-width:640px; width:90%; position:relative;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h2 id="demo-modal-title" style="font-size:20px; font-weight:700;">Exercise Demo</h2>
+        <button id="btn-close-demo-x" style="background:none; border:none; color:#888899; font-size:24px; cursor:pointer;">&times;</button>
+      </div>
+      <video id="demo-video" width="100%" controls playsinline style="border-radius:12px; background:#000; max-height:360px;">
+        <source src="" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div id="demo-fallback" style="display:none; background:#0f0f14; border:1px dashed #3f3f4e; border-radius:12px; padding:24px; text-align:center;">
+        <div style="font-size:36px; margin-bottom:12px;">🏋️‍♂️</div>
+        <h3 id="fallback-title" style="font-size:18px; font-weight:600; color:#fff; margin-bottom:8px;">Exercise Video Guide</h3>
+        <p id="fallback-desc" style="font-size:14px; color:#aaaab8; line-height:1.5; margin-bottom:16px;"></p>
+        <div id="fallback-steps" style="text-align:left; background:#181820; padding:16px; border-radius:8px; font-size:13px; color:#d0d0dc; border:1px solid #2a2a38;"></div>
+        <div style="margin-top:16px; font-size:12px; color:#6366f1; background:rgba(99,102,241,0.1); padding:10px; border-radius:8px;">
+          💡 <strong>Tip:</strong> Drag and drop your MP4 files directly into <code>frontend/assets/</code> in the File Explorer on the left to play local video recordings!
+        </div>
+      </div>
+      <button id="btn-close-demo" class="btn-secondary" style="margin-top:20px; width:100%;">Close Demo</button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.15.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.1.3/dist/pose-detection.min.js"></script>
+  <script src="api.js"></script>
+  <script src="voice.js"></script>
+  <script src="app.js"></script>
+  <script>
+    (function() {
+      const user = JSON.parse(localStorage.getItem('aligno_current') || 'null');
+      const topbar = document.getElementById('topbar-actions');
+      // Dashboard link
+      const dashBtn = document.createElement('a');
+      dashBtn.href = 'dashboard.html';
+      dashBtn.className = 'btn-secondary';
+      dashBtn.style.textDecoration = 'none';
+      dashBtn.textContent = '📊 Dashboard';
+      topbar.prepend(dashBtn);
+      // Home link
+      const backBtn = document.createElement('a');
+      backBtn.href = 'landing.html';
+      backBtn.className = 'btn-secondary';
+      backBtn.style.textDecoration = 'none';
+      backBtn.textContent = '← Home';
+      topbar.prepend(backBtn);
+      // Greeting
+      if (user) {
+        const greeting = document.createElement('span');
+        greeting.style.cssText = 'font-size:13px;color:var(--muted);align-self:center;white-space:nowrap;';
+        greeting.textContent = '👋 ' + user.name.split(' ')[0];
+        topbar.prepend(greeting);
+      }
+    })();
+  </script>
+
+
+</body>
+</html>

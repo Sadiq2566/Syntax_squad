@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aligno.ai — Your AI-Powered Fitness Coach</title>
+  <link rel="stylesheet" href="landing.css" />
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <a href="landing.html" style="text-decoration:none; display:flex; align-items:center; gap:10px;">
+          <img src="assets/logo-icon.png" alt="Aligno Logo" class="brand-logo" style="height:38px; width:38px; object-fit:contain;" />
+          <span style="font-weight:800; font-size:20px; color:#fff; letter-spacing:-0.5px;">Aligno<span style="color:#6366f1;">.ai</span></span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#exercises">Exercises</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn-ghost" id="nav-login">Log In</button>
+        <button class="btn-primary" id="nav-signup">Get Started Free</button>
+      </div>
+      <button class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🤖 AI-Powered Pose Detection</div>
+      <h1>Your Personal <span class="gradient-text">AI Aligno</span><br/>For Every Exercise</h1>
+      <p class="hero-sub">Real-time body tracking with your webcam. Get instant form feedback, count reps automatically, and train smarter — completely free.</p>
+      <div class="hero-actions">
+        <button class="btn-primary btn-lg" id="hero-signup">Start Training Free</button>
+        <button class="btn-outline btn-lg" id="hero-demo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch Demo
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Exercises</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">17</span><span class="stat-label">Body Keypoints</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">30fps</span><span class="stat-label">Real-time AI</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free & Private</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card2">
+        <!-- macOS traffic lights -->
+        <div class="hc2-header">
+          <div class="hc2-dot" style="background:#ef4444"></div>
+          <div class="hc2-dot" style="background:#eab308"></div>
+          <div class="hc2-dot" style="background:#22c55e"></div>
+          <span class="hc2-title">Live Session — Squat</span>
+        </div>
+
+        <!-- Static stick figure -->
+        <div class="hc2-canvas-wrap">
+          <canvas id="hero-canvas" width="340" height="280"></canvas>
+        </div>
+
+        <!-- Green feedback bar -->
+        <div class="hc2-feedback">✓ Good form — depth reached!</div>
+
+        <!-- Angle bars -->
+        <div class="hc2-bars">
+          <div class="hc2-bar-row">
+            <span class="hc2-bar-label">Knee (L)</span>
+            <div class="hc2-track"><div class="hc2-fill" style="width:62%;background:#22c55e"></div></div>
+            <span class="hc2-bar-val">92°</span>
+          </div>
+          <div class="hc2-bar-row">
+            <span class="hc2-bar-label">Knee (R)</span>
+            <div class="hc2-track"><div class="hc2-fill" style="width:64%;background:#22c55e"></div></div>
+            <span class="hc2-bar-val">94°</span>
+          </div>
+          <div class="hc2-bar-row">
+            <span class="hc2-bar-label">Hip Angle</span>
+            <div class="hc2-track"><div class="hc2-fill" style="width:70%;background:#eab308"></div></div>
+            <span class="hc2-bar-val">104°</span>
+          </div>
+        </div>
+
+        <!-- Footer stats -->
+        <div class="hc2-footer">
+          <div class="hc2-stat">
+            <span class="hc2-val" style="color:#22c55e">8</span>
+            <span class="hc2-lbl">REPS</span>
+          </div>
+          <div class="hc2-stat">
+            <span class="hc2-val" style="color:#22c55e">92%</span>
+            <span class="hc2-lbl">SCORE</span>
+          </div>
+          <div class="hc2-stat">
+            <span class="hc2-val" style="color:#e8e8f2">7</span>
+            <span class="hc2-lbl">GOOD</span>
+          </div>
+          <div class="hc2-stat">
+            <span class="hc2-val" style="color:#ef4444">1</span>
+            <span class="hc2-lbl">NEEDS WORK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ── -->
+  <section id="features">
+    <div class="section-inner">
+      <div class="section-label">WHY POSTUREAI</div>
+      <h2>Everything you need for <span class="gradient-text">perfect form</span></h2>
+      <p class="section-sub">No gym equipment, no personal trainer required. Just your webcam and our AI.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Real-Time Analysis</h3>
+          <p>MoveNet Thunder AI detects 17 body keypoints at 30+ FPS. Get instant feedback on every rep as you move.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Smart Rep Counter</h3>
+          <p>FSM-based state machine tracks your movement phases. Counts reps only when proper form thresholds are met.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+          </div>
+          <h3>Posture Scoring</h3>
+          <p>Each rep is scored Good, Fair, or Needs Work based on joint angles. Track your form quality over time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon orange">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 1 0 7.75"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Personalised to You</h3>
+          <p>Set your fitness level, physical stats, and any injuries. Get coaching adapted to your body and experience.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Injury Aware</h3>
+          <p>Tell us about any injuries and we flag exercises that may aggravate them, keeping you training safely.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon indigo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>100% Private</h3>
+          <p>All AI processing runs in your browser. Your camera feed never leaves your device. No subscriptions ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section id="how-it-works">
+    <div class="section-inner">
+      <div class="section-label">HOW IT WORKS</div>
+      <h2>Up and training in <span class="gradient-text">3 simple steps</span></h2>
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Create Your Profile</h3>
+          <p>Enter your height, weight, age, fitness level, and any injuries. Takes under 2 minutes.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Enable Your Camera</h3>
+          <p>Grant camera access, step back so your full body is visible, and select an exercise.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Train Smarter</h3>
+          <p>Move naturally. The AI tracks your form in real-time, counts reps, and tells you what to fix.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXERCISES ── -->
+  <section id="exercises">
+    <div class="section-inner">
+      <div class="section-label">SUPPORTED EXERCISES</div>
+      <h2>Master every <span class="gradient-text">fundamental movement</span></h2>
+      <div class="exercises-grid">
+        <div class="ex-card"><h4>Squat</h4><p>Knee & hip alignment tracking</p></div>
+        <div class="ex-card"><h4>Push-Up</h4><p>Elbow angle & body line</p></div>
+        <div class="ex-card"><h4>Plank</h4><p>Core alignment hold timer</p></div>
+        <div class="ex-card"><h4>Shoulder Press</h4><p>Overhead pressing form</p></div>
+        
+        <div class="ex-card"><h4>Bicep Curl</h4><p>Bilateral arm tracking</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section id="cta">
+    <div class="section-inner cta-inner">
+      <h2>Ready to train with <span class="gradient-text">perfect form?</span></h2>
+      <p>Join thousands of athletes using AI to improve their movement quality.</p>
+      <button class="btn-primary btn-lg" id="cta-signup">Create Free Account</button>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-logo" style="display:flex; align-items:center; gap:8px;">
+        <img src="assets/logo-icon.png" alt="Aligno Icon" style="height:26px; width:26px; object-fit:contain;" />
+        <span style="font-weight:800; font-size:16px; color:#fff;">Aligno<span style="color:#6366f1;">.ai</span></span>
+      </div>
+      <p class="footer-copy">© 2025 Aligno.ai. All AI runs locally in your browser. Your data stays yours.</p>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════
+       AUTH MODAL OVERLAY
+  ══════════════════════════════════════════ -->
+  <div id="modal-overlay" class="hidden">
+    <div id="modal">
+      <button id="modal-close">✕</button>
+
+      <!-- ── LOGIN PANEL ── -->
+      <div id="panel-login" class="panel">
+        <div class="modal-logo" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+          <img src="assets/logo-icon.png" alt="Aligno Icon" style="height:32px; width:32px; object-fit:contain;" />
+          <span style="font-weight:800; font-size:20px; color:#fff;">Aligno<span style="color:#6366f1;">.ai</span></span>
+        </div>
+        <h2>Welcome back</h2>
+        <p class="modal-sub">Log in to continue your training</p>
+        <form id="form-login" novalidate>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" id="login-email" placeholder="you@example.com" autocomplete="email" />
+            <span class="field-err" id="err-login-email"></span>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <div class="input-wrap">
+              <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
+              <button type="button" class="toggle-pw" data-target="login-password">Show</button>
+            </div>
+            <span class="field-err" id="err-login-password"></span>
+          </div>
+          <div id="login-error" class="form-error hidden"></div>
+          <button type="submit" class="btn-primary btn-full">Log In</button>
+        </form>
+        <p class="switch-text">Don't have an account? <button class="link-btn" id="switch-to-signup">Sign Up</button></p>
+      </div>
+
+      <!-- ── SIGNUP PANEL (multi-step) ── -->
+      <div id="panel-signup" class="panel hidden">
+        <div class="modal-logo" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+          <img src="assets/logo-icon.png" alt="Aligno Icon" style="height:32px; width:32px; object-fit:contain;" />
+          <span style="font-weight:800; font-size:20px; color:#fff;">Aligno<span style="color:#6366f1;">.ai</span></span>
+        </div>
+
+        <!-- Step indicator -->
+        <div class="step-indicator">
+          <div class="step-dot active" data-step="1"><span>1</span></div>
+          <div class="step-line"></div>
+          <div class="step-dot" data-step="2"><span>2</span></div>
+          <div class="step-line"></div>
+          <div class="step-dot" data-step="3"><span>3</span></div>
+          <div class="step-line"></div>
+          <div class="step-dot" data-step="4"><span>4</span></div>
+        </div>
+        <div class="step-labels">
+          <span>Account</span><span>Profile</span><span>Fitness</span><span>Health</span>
+        </div>
+
+        <!-- STEP 1 — Account -->
+        <div class="signup-step active" id="step-1">
+          <h2>Create your account</h2>
+          <p class="modal-sub">Start your AI fitness journey</p>
+          <div class="field">
+            <label>Full Name</label>
+            <input type="text" id="su-name" placeholder="Alex Johnson" autocomplete="name" />
+            <span class="field-err" id="err-su-name"></span>
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" id="su-email" placeholder="you@example.com" autocomplete="email" />
+            <span class="field-err" id="err-su-email"></span>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <div class="input-wrap">
+              <input type="password" id="su-password" placeholder="Min. 8 characters" />
+              <button type="button" class="toggle-pw" data-target="su-password">Show</button>
+            </div>
+            <div class="pw-strength" id="pw-strength">
+              <div class="pw-bar"><div id="pw-bar-fill"></div></div>
+              <span id="pw-label"></span>
+            </div>
+            <span class="field-err" id="err-su-password"></span>
+          </div>
+        </div>
+
+        <!-- STEP 2 — Physical Profile -->
+        <div class="signup-step hidden" id="step-2">
+          <h2>Your body profile</h2>
+          <p class="modal-sub">We use this to personalise your coaching</p>
+          <div class="field-row">
+            <div class="field">
+              <label>Age</label>
+              <input type="number" id="su-age" placeholder="25" min="10" max="100" />
+              <span class="field-err" id="err-su-age"></span>
+            </div>
+            <div class="field">
+              <label>Sex</label>
+              <select id="su-sex">
+                <option value="">Select…</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Prefer not to say</option>
+              </select>
+              <span class="field-err" id="err-su-sex"></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Height</label>
+              <div class="input-unit">
+                <input type="number" id="su-height" placeholder="175" min="50" max="250" />
+                <span class="unit">cm</span>
+              </div>
+              <span class="field-err" id="err-su-height"></span>
+            </div>
+            <div class="field">
+              <label>Weight</label>
+              <div class="input-unit">
+                <input type="number" id="su-weight" placeholder="70" min="20" max="300" />
+                <span class="unit">kg</span>
+              </div>
+              <span class="field-err" id="err-su-weight"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Primary Fitness Goal</label>
+            <select id="su-goal">
+              <option value="">Select your goal…</option>
+              <option>Build muscle & strength</option>
+              <option>Lose weight & tone</option>
+              <option>Improve flexibility & mobility</option>
+              <option>Enhance athletic performance</option>
+              <option>Rehabilitation & recovery</option>
+              <option>General health & fitness</option>
+            </select>
+            <span class="field-err" id="err-su-goal"></span>
+          </div>
+        </div>
+
+        <!-- STEP 3 — Fitness Level -->
+        <div class="signup-step hidden" id="step-3">
+          <h2>Your fitness level</h2>
+          <p class="modal-sub">We'll tailor feedback intensity and exercise guidance to match</p>
+          <div class="level-cards">
+            <label class="level-card" data-level="Beginner">
+              <input type="radio" name="fitness-level" value="Beginner" />
+              <div class="lc-inner">
+                <span class="lc-icon">🌱</span>
+                <strong>Beginner</strong>
+                <p>New to exercise or returning after a long break. Less than 6 months consistent training.</p>
+              </div>
+            </label>
+            <label class="level-card" data-level="Intermediate">
+              <input type="radio" name="fitness-level" value="Intermediate" />
+              <div class="lc-inner">
+                <span class="lc-icon">⚡</span>
+                <strong>Intermediate</strong>
+                <p>Training consistently for 6 months to 2 years. Comfortable with basic movements.</p>
+              </div>
+            </label>
+            <label class="level-card" data-level="Advanced">
+              <input type="radio" name="fitness-level" value="Advanced" />
+              <div class="lc-inner">
+                <span class="lc-icon">🔥</span>
+                <strong>Advanced</strong>
+                <p>2+ years of consistent training. Solid technique across major compound lifts.</p>
+              </div>
+            </label>
+          </div>
+          <span class="field-err" id="err-su-level"></span>
+          <div class="field mt-16">
+            <label>How many days per week do you train?</label>
+            <div class="day-picker" id="day-picker">
+              <button type="button" class="day-btn" data-val="1">1</button>
+              <button type="button" class="day-btn" data-val="2">2</button>
+              <button type="button" class="day-btn" data-val="3">3</button>
+              <button type="button" class="day-btn" data-val="4">4</button>
+              <button type="button" class="day-btn" data-val="5">5</button>
+              <button type="button" class="day-btn" data-val="6">6</button>
+              <button type="button" class="day-btn" data-val="7">7</button>
+            </div>
+            <span class="field-err" id="err-su-days"></span>
+          </div>
+        </div>
+
+        <!-- STEP 4 — Health & Injuries -->
+        <div class="signup-step hidden" id="step-4">
+          <h2>Health & injuries</h2>
+          <p class="modal-sub">This helps us keep your training safe. All info stays on your device.</p>
+          <div class="field">
+            <label>Do you currently have any injuries or physical limitations?</label>
+            <div class="radio-group">
+              <label class="radio-opt">
+                <input type="radio" name="has-injury" value="no" checked />
+                <span class="radio-box"></span>
+                <span>No injuries — I'm good to go!</span>
+              </label>
+              <label class="radio-opt">
+                <input type="radio" name="has-injury" value="yes" />
+                <span class="radio-box"></span>
+                <span>Yes, I have an injury or limitation</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Injury details — shown conditionally -->
+          <div id="injury-details" class="hidden">
+            <div class="injury-section-title">Tell us about your injury</div>
+            <div class="field">
+              <label>Affected body part(s)</label>
+              <div class="body-part-grid" id="body-part-grid">
+                <button type="button" class="bp-btn" data-part="Neck">🦴 Neck</button>
+                <button type="button" class="bp-btn" data-part="Shoulder (L)">💪 Shoulder (L)</button>
+                <button type="button" class="bp-btn" data-part="Shoulder (R)">💪 Shoulder (R)</button>
+                <button type="button" class="bp-btn" data-part="Elbow (L)">🦾 Elbow (L)</button>
+                <button type="button" class="bp-btn" data-part="Elbow (R)">🦾 Elbow (R)</button>
+                <button type="button" class="bp-btn" data-part="Wrist (L)">✋ Wrist (L)</button>
+                <button type="button" class="bp-btn" data-part="Wrist (R)">✋ Wrist (R)</button>
+                <button type="button" class="bp-btn" data-part="Lower Back">🔻 Lower Back</button>
+                <button type="button" class="bp-btn" data-part="Upper Back">🔺 Upper Back</button>
+                <button type="button" class="bp-btn" data-part="Hip (L)">🦵 Hip (L)</button>
+                <button type="button" class="bp-btn" data-part="Hip (R)">🦵 Hip (R)</button>
+                <button type="button" class="bp-btn" data-part="Knee (L)">🦿 Knee (L)</button>
+                <button type="button" class="bp-btn" data-part="Knee (R)">🦿 Knee (R)</button>
+                <button type="button" class="bp-btn" data-part="Ankle (L)">🦶 Ankle (L)</button>
+                <button type="button" class="bp-btn" data-part="Ankle (R)">🦶 Ankle (R)</button>
+                <button type="button" class="bp-btn" data-part="Other">➕ Other</button>
+              </div>
+              <span class="field-err" id="err-body-parts"></span>
+            </div>
+            <div class="field">
+              <label>Type of injury / condition</label>
+              <select id="su-injury-type">
+                <option value="">Select type…</option>
+                <option>Muscle strain or tear</option>
+                <option>Ligament sprain</option>
+                <option>Tendinitis</option>
+                <option>Joint pain / arthritis</option>
+                <option>Post-surgery recovery</option>
+                <option>Fracture / bone issue</option>
+                <option>Chronic pain</option>
+                <option>Nerve / disc issue</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Injury severity</label>
+              <div class="severity-row">
+                <label class="sev-opt">
+                  <input type="radio" name="injury-severity" value="Mild" />
+                  <span class="sev-badge mild">Mild</span>
+                </label>
+                <label class="sev-opt">
+                  <input type="radio" name="injury-severity" value="Moderate" />
+                  <span class="sev-badge moderate">Moderate</span>
+                </label>
+                <label class="sev-opt">
+                  <input type="radio" name="injury-severity" value="Severe" />
+                  <span class="sev-badge severe">Severe</span>
+                </label>
+              </div>
+            </div>
+            <div class="field">
+              <label>Additional notes <span class="optional">(optional)</span></label>
+              <textarea id="su-injury-notes" placeholder="e.g. Had ACL surgery 3 months ago, cleared for light exercise..." rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nav buttons -->
+        <div class="step-nav">
+          <button type="button" class="btn-ghost" id="btn-back" style="visibility:hidden">← Back</button>
+          <button type="button" class="btn-primary" id="btn-next">Continue →</button>
+        </div>
+        <p class="switch-text">Already have an account? <button class="link-btn" id="switch-to-login">Log In</button></p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="landing.js"></script>
+  <script>
+  // ── Static stick figure (squat pose) ──────────────────────────
+  (function () {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const CX = 170, TOP = 18;
+
+    // Joint positions — front-facing standing person
+    const J = {
+      head: { x: CX,      y: TOP + 18  },
+      neck: { x: CX,      y: TOP + 38  },
+      lSho: { x: CX - 38, y: TOP + 52  },
+      rSho: { x: CX + 38, y: TOP + 52  },
+      lElb: { x: CX - 44, y: TOP + 90  },
+      rElb: { x: CX + 44, y: TOP + 90  },
+      lWri: { x: CX - 48, y: TOP + 126 },
+      rWri: { x: CX + 48, y: TOP + 126 },
+      lHip: { x: CX - 24, y: TOP + 128 },
+      rHip: { x: CX + 24, y: TOP + 128 },
+      lKne: { x: CX - 26, y: TOP + 186 },
+      rKne: { x: CX + 26, y: TOP + 186 },
+      lAnk: { x: CX - 24, y: TOP + 244 },
+      rAnk: { x: CX + 24, y: TOP + 244 },
+    };
+
+    // Bones: [from, to, color]
+    const BONES = [
+      ['neck','lSho','#6366f1'], ['neck','rSho','#6366f1'],
+      ['lSho','rSho','#6366f1'],
+      ['neck','lHip','#6366f1'], ['neck','rHip','#6366f1'],
+      ['lSho','lElb','#22c55e'], ['lElb','lWri','#22c55e'],
+      ['rSho','rElb','#22c55e'], ['rElb','rWri','#22c55e'],
+      ['lHip','rHip','#6366f1'],
+      ['lHip','lKne','#6366f1'], ['lKne','lAnk','#22c55e'],
+      ['rHip','rKne','#6366f1'], ['rKne','rAnk','#22c55e'],
+    ];
+
+    // Joint color map
+    const JC = {
+      neck:'#6366f1',
+      lSho:'#22c55e', rSho:'#22c55e',
+      lElb:'#22c55e', rElb:'#22c55e',
+      lWri:'#22c55e', rWri:'#22c55e',
+      lHip:'#6366f1', rHip:'#6366f1',
+      lKne:'#eab308', rKne:'#eab308',
+      lAnk:'#22c55e', rAnk:'#22c55e',
+    };
+
+    function drawLine(a, b, color) {
+      ctx.save();
+      ctx.shadowColor = color; ctx.shadowBlur = 9;
+      ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawDot(p, r, color) {
+      ctx.save();
+      ctx.shadowColor = color; ctx.shadowBlur = 12;
+      // outer ring
+      ctx.beginPath(); ctx.arc(p.x, p.y, r + 3, 0, Math.PI * 2);
+      ctx.strokeStyle = color; ctx.lineWidth = 1; ctx.globalAlpha = 0.3; ctx.stroke();
+      // filled core
+      ctx.globalAlpha = 1;
+      ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = color; ctx.fill();
+      // white specular
+      ctx.beginPath(); ctx.arc(p.x - r * 0.3, p.y - r * 0.3, r * 0.28, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.7)'; ctx.shadowBlur = 0; ctx.fill();
+      ctx.restore();
+    }
+
+    // Draw
+    ctx.clearRect(0, 0, W, H);
+
+    // Bones
+    BONES.forEach(([a, b, col]) => drawLine(J[a], J[b], col));
+
+    // Head
+    const hd = J.head, hr = 16;
+    ctx.save();
+    ctx.shadowColor = '#818cf8'; ctx.shadowBlur = 20;
+    const hg = ctx.createRadialGradient(hd.x - 5, hd.y - 5, 2, hd.x, hd.y, hr);
+    hg.addColorStop(0, '#9fa3ff'); hg.addColorStop(0.6, '#6366f1'); hg.addColorStop(1, '#3a3d99');
+    ctx.beginPath(); ctx.arc(hd.x, hd.y, hr, 0, Math.PI * 2);
+    ctx.fillStyle = hg; ctx.fill();
+    ctx.strokeStyle = '#818cf8'; ctx.lineWidth = 1.5; ctx.globalAlpha = 0.5; ctx.stroke();
+    ctx.restore();
+
+    // Joints
+    Object.entries(JC).forEach(([k, col]) => {
+      const big = k.includes('Kne') || k.includes('Hip');
+      drawDot(J[k], big ? 6 : 4.5, col);
+    });
+
+    // Angle labels at knees
+    ctx.font = 'bold 9px monospace';
+    ctx.fillStyle = '#eab308'; ctx.shadowColor = '#eab308'; ctx.shadowBlur = 6;
+    ctx.fillText('92°', J.lKne.x - 24, J.lKne.y + 3);
+    ctx.fillText('94°', J.rKne.x + 7,  J.rKne.y + 3);
+  })();
+  </script>
+</body>
+</html>

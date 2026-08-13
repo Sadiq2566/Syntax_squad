@@ -1,0 +1,6 @@
+{
+  "name": "PostureAI",
+  "description": "AI-powered posture coaching application with real-time pose estimation and exercise tracking.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,128 @@
+const fs = require('fs');
+const path = require('path');
+
+const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <!-- Head Gradient -->
+    <linearGradient id="headGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+
+    <!-- Body Gradient -->
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="35%" stop-color="#2563EB"/>
+      <stop offset="70%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+
+    <!-- Arc Gradient -->
+    <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#C084FC"/>
+    </linearGradient>
+
+    <!-- 'O' Ring Gradient -->
+    <linearGradient id="oGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+
+    <!-- Accent Lines -->
+    <linearGradient id="lineLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+
+    <linearGradient id="lineRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+
+    <!-- Soft Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3B82F6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="none"/>
+
+  <!-- ICON SECTION -->
+  <g transform="translate(0, 10)">
+    <!-- Floor Shadow -->
+    <ellipse cx="250" cy="272" rx="65" ry="6" fill="#6366F1" opacity="0.2"/>
+
+    <!-- Outer Arc Orbit -->
+    <path d="M 165,145 A 105,105 0 1,1 275,250" fill="none" stroke="url(#arcGrad)" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx='165' cy='145' r='6' fill='#38BDF8'/>
+    <circle cx='330' cy='205' r='6' fill='#C084FC'/>
+
+    <!-- Head -->
+    <circle cx="270" cy="95" r="25" fill="url(#headGrad)"/>
+
+    <!-- Extended Arm -->
+    <path d="M 250,132 L 340,132 C 348,132 352,138 352,143 C 352,148 348,154 340,154 L 235,154 Z" fill="url(#bodyGrad)"/>
+
+    <!-- Torso and Leg Geometry (Matching Squat Position) -->
+    <!-- Back to Hip -->
+    <path d="M 255,125 
+             C 230,150 205,175 190,195 
+             C 180,210 190,228 210,230 
+             L 275,230 
+             C 290,230 295,220 285,208 
+             L 245,160 Z" fill="url(#bodyGrad)"/>
+
+    <!-- Thigh & Calf -->
+    <path d="M 200,190 
+             L 275,210 
+             C 290,214 290,224 278,235 
+             L 230,270 
+             C 222,276 226,280 238,280 
+             L 280,280 
+             C 290,280 290,270 278,262 
+             L 245,230 
+             L 282,216 
+             C 296,210 292,198 275,195 Z" fill="url(#bodyGrad)"/>
+
+    <!-- Skeleton Overlay Lines -->
+    <polyline points="252,138 205,190 278,210 236,268" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+
+    <!-- Joint Glowing Nodes -->
+    <circle cx="252" cy="138" r="7.5" fill="#FFFFFF" filter="url(#glow)"/>
+    <circle cx="205" cy="190" r="7.5" fill="#FFFFFF" filter="url(#glow)"/>
+    <circle cx="278" cy="210" r="7.5" fill="#FFFFFF" filter="url(#glow)"/>
+    <circle cx="236" cy="268" r="7.5" fill="#FFFFFF" filter="url(#glow)"/>
+  </g>
+
+  <!-- LOGO TEXT: "Aligno" -->
+  <g transform="translate(62, 385)">
+    <!-- "Align" -->
+    <text x="0" y="0" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="88" fill="#0B132B" letter-spacing="-2">Align</text>
+
+    <!-- "o" -->
+    <g transform="translate(248, -62)">
+      <circle cx="32" cy="32" r="28" fill="none" stroke="url(#oGrad)" stroke-width="16"/>
+      <!-- Small Purple Dot at Top-Right of "o" -->
+      <circle cx="58" cy="4" r="8" fill="#A855F7"/>
+    </g>
+  </g>
+
+  <!-- SUBTITLE: "AI POSTURE COACH" -->
+  <g transform="translate(62, 440)">
+    <!-- Left Accent Line -->
+    <line x1="0" y1="-5" x2="48" y2="-5" stroke="url(#lineLeft)" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Subtitle Text -->
+    <text x="64" y="0" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="15" fill="#1E293B" letter-spacing="6">AI POSTURE COACH</text>
+
+    <!-- Right Accent Line -->
+    <line x1="328" y1="-5" x2="376" y2="-5" stroke="url(#lineRight)" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+</svg>
+`;
+
+fs.writeFileSync(path.join(__dirname, 'frontend/assets/logo.svg'), svgContent);
+console.log('Successfully created frontend/assets/logo.svg');

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Aligno.ai — Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css"/>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <nav id="topbar">
+    <div class="nav-left">
+      <a href="landing.html" class="logo" style="text-decoration:none; display:flex; align-items:center; gap:10px;">
+        <img src="assets/logo-icon.png" alt="Aligno Icon" style="height:32px; width:32px; object-fit:contain;" />
+        <span style="font-weight:800; font-size:18px; color:#fff; letter-spacing:-0.5px;">Aligno<span style="color:#6366f1;">.ai</span></span>
+      </a>
+      <span class="page-title">Dashboard</span>
+    </div>
+    <div class="nav-right">
+      <span id="user-greeting"></span>
+      <a href="index.html" class="btn-primary">🏋️ Start Training</a>
+      <a href="landing.html" class="btn-ghost">← Home</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="main">
+
+    <!-- No data state -->
+    <div id="no-data" class="hidden">
+      <div class="empty-icon">📊</div>
+      <h2>No sessions yet</h2>
+      <p>Complete your first workout to see your progress here.</p>
+      <a href="index.html" class="btn-primary">Start Your First Session</a>
+    </div>
+
+    <!-- Dashboard content -->
+    <div id="dashboard-content" class="hidden">
+
+      <!-- Hero stats row -->
+      <div class="stats-row" id="hero-stats"></div>
+
+      <!-- Filter bar -->
+      <div class="filter-bar">
+        <div class="filter-left">
+          <span class="filter-label">Exercise:</span>
+          <div id="exercise-filter" class="pill-group"></div>
+        </div>
+        <div class="filter-right">
+          <span class="filter-label">Period:</span>
+          <div class="pill-group">
+            <button class="pill active" data-period="7">7 days</button>
+            <button class="pill" data-period="30">30 days</button>
+            <button class="pill" data-period="all">All time</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts grid -->
+      <div class="charts-grid">
+
+        <!-- Reps over time -->
+        <div class="chart-card wide">
+          <div class="card-header">
+            <div>
+              <div class="card-title">📈 Reps Per Session</div>
+              <div class="card-sub">Your rep count over time — higher is better</div>
+            </div>
+            <div class="card-badge" id="reps-trend-badge"></div>
+          </div>
+          <div class="chart-wrap" id="chart-reps"></div>
+        </div>
+
+        <!-- Form score trend -->
+        <div class="chart-card wide">
+          <div class="card-header">
+            <div>
+              <div class="card-title">⭐ Form Score Trend</div>
+              <div class="card-sub">% of reps with good form per session</div>
+            </div>
+            <div class="card-badge" id="form-trend-badge"></div>
+          </div>
+          <div class="chart-wrap" id="chart-form"></div>
+        </div>
+
+        <!-- Exercise breakdown pie -->
+        <div class="chart-card half">
+          <div class="card-header">
+            <div>
+              <div class="card-title">🥧 Exercise Breakdown</div>
+              <div class="card-sub">Sessions by exercise type</div>
+            </div>
+          </div>
+          <div class="chart-wrap pie-wrap" id="chart-pie"></div>
+        </div>
+
+        <!-- Good vs bad reps stacked bar -->
+        <div class="chart-card half">
+          <div class="card-header">
+            <div>
+              <div class="card-title">🟢 Good vs Needs Work</div>
+              <div class="card-sub">Rep quality breakdown per session</div>
+            </div>
+          </div>
+          <div class="chart-wrap" id="chart-quality"></div>
+        </div>
+
+        <!-- Weekly volume -->
+        <div class="chart-card wide">
+          <div class="card-header">
+            <div>
+              <div class="card-title">📅 Weekly Volume</div>
+              <div class="card-sub">Total reps completed each week</div>
+            </div>
+          </div>
+          <div class="chart-wrap" id="chart-weekly"></div>
+        </div>
+
+        <!-- Best sessions table -->
+        <div class="chart-card wide">
+          <div class="card-header">
+            <div>
+              <div class="card-title">🏆 Recent Sessions</div>
+              <div class="card-sub">Your last 10 workouts</div>
+            </div>
+            <button class="btn-ghost small" id="btn-clear">Clear Data</button>
+          </div>
+          <div id="sessions-table"></div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="api.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

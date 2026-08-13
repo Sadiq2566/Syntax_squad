@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="headGradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+
+    <linearGradient id="bodyGradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="35%" stop-color="#2563EB"/>
+      <stop offset="70%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+
+    <linearGradient id="arcGradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#C084FC"/>
+    </linearGradient>
+
+    <filter id="glowIcon" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3B82F6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(-100, -20)">
+    <!-- Floor Shadow -->
+    <ellipse cx="250" cy="272" rx="65" ry="6" fill="#6366F1" opacity="0.2"/>
+
+    <!-- Outer Arc Orbit -->
+    <path d="M 165,145 A 105,105 0 1,1 275,250" fill="none" stroke="url(#arcGradIcon)" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="165" cy="145" r="6" fill="#38BDF8"/>
+    <circle cx="330" cy="205" r="6" fill="#C084FC"/>
+
+    <!-- Head -->
+    <circle cx="270" cy="95" r="25" fill="url(#headGradIcon)"/>
+
+    <!-- Extended Arm -->
+    <path d="M 250,132 L 340,132 C 348,132 352,138 352,143 C 352,148 348,154 340,154 L 235,154 Z" fill="url(#bodyGradIcon)"/>
+
+    <!-- Torso and Leg Geometry (Matching Squat Position) -->
+    <path d="M 255,125 
+             C 230,150 205,175 190,195 
+             C 180,210 190,228 210,230 
+             L 275,230 
+             C 290,230 295,220 285,208 
+             L 245,160 Z" fill="url(#bodyGradIcon)"/>
+
+    <path d="M 200,190 
+             L 275,210 
+             C 290,214 290,224 278,235 
+             L 230,270 
+             C 222,276 226,280 238,280 
+             L 280,280 
+             C 290,280 290,270 278,262 
+             L 245,230 
+             L 282,216 
+             C 296,210 292,198 275,195 Z" fill="url(#bodyGradIcon)"/>
+
+    <!-- Skeleton Overlay Lines -->
+    <polyline points="252,138 205,190 278,210 236,268" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+
+    <!-- Joint Glowing Nodes -->
+    <circle cx="252" cy="138" r="7.5" fill="#FFFFFF" filter="url(#glowIcon)"/>
+    <circle cx="205" cy="190" r="7.5" fill="#FFFFFF" filter="url(#glowIcon)"/>
+    <circle cx="278" cy="210" r="7.5" fill="#FFFFFF" filter="url(#glowIcon)"/>
+    <circle cx="236" cy="268" r="7.5" fill="#FFFFFF" filter="url(#glowIcon)"/>
+  </g>
+</svg>
